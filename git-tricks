@@ -1,0 +1,61 @@
+git branch -f master HEAD && git checkout master 
+ -- assuming your goal is to keep your current head but to designate it as master
+
+or
+
+git branch -f master temp
+git checkout master
+(these two commands can be abbreviated as git checkout -B master temp)
+
+You can then delete the temporary branch:
+git branch -d temp
+
+Finally, you will probably want to push the reestablished history:
+git push origin master
+
+https://stackoverflow.com/questions/5772192/how-can-i-reconcile-detached-head-with-master-origin
+
+or
+
+To get back on a master branch, while keeping the changes, try the following commands:
+git rebase HEAD master
+git checkout master
+
+or
+
+If you are completely sure HEAD is the good state:
+git branch -f master HEAD
+git checkout master
+
+You probably can't push to origin, since your master has diverged from origin. If you are sure no one else is using the repo, you can force-push:
+git push -f
+
+Most useful if you are on a feature branch no one else is using.
+
+OR
+************
+just do 
+git checkout master
+
+git branch 
+to confirm your branch.
+************
+	
+
+or
+delete the local branch again, since I didn't have any local commits that I wanted to push:
+git branch -d branchname
+and then checking the branch out again
+git checkout branchname
+
+git log --oneline -p d43ff41 -- app/
+
+git log --oneline --graph --all --decorate
+
+git show
+
+
+git diff sha1
+
+
+git log -p feedback_form..origin/feedback_form
